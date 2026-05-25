@@ -15,5 +15,5 @@ python -m pip install -r requirements.txt
 Run tests with:
 
 ```powershell
-python -m unittest
+runpytests
 ```
