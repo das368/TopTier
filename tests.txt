@@ -1,0 +1,7 @@
+x core creates a new tierlist with default tiers and name Untitled when no name is given
+
+rename a tier
+add image item
+move image item into tier
+move image item between tiers
+keep unassigned items updated
