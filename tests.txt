@@ -6,7 +6,9 @@ x core can rename a tierlist
 
 x core can rename a tier
 
-- core can add an image to a tierlist's tier
+x core adds an image item to a tierlist
+
+x core moves an image to a tier by id
 
 rename a tier
 add image item
