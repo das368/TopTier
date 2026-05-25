@@ -1,5 +1,13 @@
 x core creates a new tierlist with default tiers and name Untitled when no name is given
 
+x core creates a new tierlist with default tiers and name Untitled when a name is given
+
+x core can rename a tierlist
+
+x core can rename a tier
+
+- core can add an image to a tierlist's tier
+
 rename a tier
 add image item
 move image item into tier

@@ -13,3 +13,11 @@ def create_tier_list(name="Untitled"):
             ]
         )
     return tierlist
+
+def rename_tier_list(tierlist, new_name):
+    tierlist.name = new_name
+    return tierlist
+
+def rename_tier(tierlist, index, new_name):
+    tierlist.tiers[index].name = new_name
+    return tierlist
