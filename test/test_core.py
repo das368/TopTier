@@ -1,7 +1,7 @@
 import unittest
 
 from src.image_item import ImageItem
-from src.core import create_tier_list, rename_tier_list, rename_tier, add_image_item, move_image_to_tier, get_unassigned_images
+from src.core import create_tier_list, rename_tier_list, rename_tier, add_image_item, move_image_to_tier, get_unassigned_images, delete_image_item
 
 
 class CoreTests(unittest.TestCase):
@@ -107,6 +107,23 @@ class CoreTests(unittest.TestCase):
         result = get_unassigned_images(tierlist)
 
         self.assertEqual(result, [image_item2])
+    
+    def test_core_can_delete_image_items(self):
+        tierlist = create_tier_list()
+        image_item = ImageItem(
+            id="8f2b5f2e-1471-4f7f-83cb-8c6b98e67a12",
+            path="assets/images/test.png",
+            original_name="test.png"
+            )
+        tierlist = add_image_item(tierlist, image_item)
+
+        move_image_to_tier(tierlist, image_item.id, 0)
+
+        result = delete_image_item(tierlist, image_item.id)
+
+        self.assertEqual(result.image_items, [])
+        self.assertEqual(result.tiers[0].images, [])
+
 
 
 if __name__ == "__main__":

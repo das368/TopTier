@@ -15,3 +15,5 @@ x core moves an image between tiers
 x core does not duplicate when adding an image to the same tier it is currently into
 
 x core can retrieve all unassigned images
+
+x core can delete an image from the tierlist entirely
