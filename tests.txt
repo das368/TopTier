@@ -14,8 +14,4 @@ x core moves an image between tiers
 
 x core does not duplicate when adding an image to the same tier it is currently into
 
-rename a tier
-add image item
-move image item into tier
-move image item between tiers
-keep unassigned items updated
+x core can retrieve all unassigned images

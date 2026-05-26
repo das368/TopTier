@@ -1,7 +1,7 @@
 import unittest
 
 from src.image_item import ImageItem
-from src.core import create_tier_list, rename_tier_list, rename_tier, add_image_item, move_image_to_tier
+from src.core import create_tier_list, rename_tier_list, rename_tier, add_image_item, move_image_to_tier, get_unassigned_images
 
 
 class CoreTests(unittest.TestCase):
@@ -86,6 +86,28 @@ class CoreTests(unittest.TestCase):
         result = move_image_to_tier(tierlist, image_item.id, 0)
 
         self.assertEqual(result.tiers[0].images, [image_item.id])
+    
+    def test_core_can_retrieve_unassigned_images(self):
+        tierlist = create_tier_list()
+        image_item1 = ImageItem(
+            id="123",
+            path="assets/images/test1.png",
+            original_name="test1.png"
+            )
+        image_item2 = ImageItem(
+            id="321",
+            path="assets/images/test2.png",
+            original_name="test2.png"
+            )
+        tierlist = add_image_item(tierlist, image_item1)
+        tierlist = add_image_item(tierlist, image_item2)
+        
+        move_image_to_tier(tierlist, image_item1.id, 0)
+
+        result = get_unassigned_images(tierlist)
+
+        self.assertEqual(result, [image_item2])
+
 
 if __name__ == "__main__":
     unittest.main()

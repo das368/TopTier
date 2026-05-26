@@ -33,3 +33,15 @@ def move_image_to_tier(tierlist, image_id, index):
     
     tierlist.tiers[index].images.append(image_id)
     return tierlist
+
+def get_unassigned_images(tierlist):
+    assigned_ids = []
+
+    for tier in tierlist.tiers:
+        assigned_ids.extend(tier.images)
+    
+    return [
+        image_item
+        for image_item in tierlist.image_items
+        if image_item.id not in assigned_ids
+    ]
