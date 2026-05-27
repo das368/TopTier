@@ -56,3 +56,10 @@ def delete_image_item(tierlist, image_id):
         if image_item.id != image_id
     ]
     return tierlist
+
+def reorder_image_in_tier(tierlist, tier_index, image_id, new_index):
+    images = tierlist.tiers[tier_index].images
+    images.remove(image_id)
+    images.insert(new_index, image_id)
+
+    return tierlist

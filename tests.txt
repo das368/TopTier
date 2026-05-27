@@ -17,3 +17,7 @@ x core does not duplicate when adding an image to the same tier it is currently 
 x core can retrieve all unassigned images
 
 x core can delete an image from the tierlist entirely
+
+x adding an image to a tier maintains the order in which they were placed
+
+x core can reorder images within a tier

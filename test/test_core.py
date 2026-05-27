@@ -1,7 +1,7 @@
 import unittest
 
 from src.image_item import ImageItem
-from src.core import create_tier_list, rename_tier_list, rename_tier, add_image_item, move_image_to_tier, get_unassigned_images, delete_image_item
+from src.core import create_tier_list, rename_tier_list, rename_tier, add_image_item, move_image_to_tier, get_unassigned_images, delete_image_item, reorder_image_in_tier
 
 
 class CoreTests(unittest.TestCase):
@@ -123,6 +123,57 @@ class CoreTests(unittest.TestCase):
 
         self.assertEqual(result.image_items, [])
         self.assertEqual(result.tiers[0].images, [])
+    
+    def test_core_preserves_image_order_in_tier(self):
+        tierlist = create_tier_list()
+        image_item1 = ImageItem(
+            id="123",
+            path="assets/images/test1.png",
+            original_name="test1.png"
+            )
+        image_item2 = ImageItem(
+            id="321",
+            path="assets/images/test2.png",
+            original_name="test2.png"
+            )
+        tierlist = add_image_item(tierlist, image_item1)
+        tierlist = add_image_item(tierlist, image_item2)
+        
+        move_image_to_tier(tierlist, image_item1.id, 0)
+
+        result = move_image_to_tier(tierlist, image_item2.id, 0)
+
+        self.assertEqual(result.tiers[0].images, [image_item1.id,image_item2.id])
+    
+    def test_core_can_reorder_images_within_tier(self):
+        tierlist = create_tier_list()
+        image_item1 = ImageItem(
+            id="111",
+            path="assets/images/test1.png",
+            original_name="test1.png"
+            )
+        image_item2 = ImageItem(
+            id="222",
+            path="assets/images/test2.png",
+            original_name="test2.png"
+            )
+        image_item3 = ImageItem(
+            id="333",
+            path="assets/images/test3.png",
+            original_name="test3.png"
+            )
+        tierlist = add_image_item(tierlist, image_item1)
+        tierlist = add_image_item(tierlist, image_item2)
+        tierlist = add_image_item(tierlist, image_item3)
+
+        move_image_to_tier(tierlist, image_item1.id, 0)
+        move_image_to_tier(tierlist, image_item2.id, 0)
+        move_image_to_tier(tierlist, image_item3.id, 0)
+
+        result = reorder_image_in_tier(tierlist, 0, image_item3.id, 0)
+
+        self.assertEqual(result.tiers[0].images, [image_item3.id, image_item1.id, image_item2.id])
+
 
 
 
