@@ -22,4 +22,4 @@ x adding an image to a tier maintains the order in which they were placed
 
 x core can reorder images within a tier
 
-xxx core tests complete
+xx core tests complete
