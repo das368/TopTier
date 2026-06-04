@@ -5,6 +5,9 @@ from src.core import create_tier_list, rename_tier_list, rename_tier, add_image_
 
 
 class CoreTests(unittest.TestCase):
+    def test_canary(self):
+        self.assertTrue(True)
+
     def test_core_creates_default_tier_list(self):
         result = create_tier_list()
 
