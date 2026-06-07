@@ -1,5 +1,3 @@
-tests
-
 x canary test
 
 x core creates a new tierlist with default tiers and name Untitled when no name is given
